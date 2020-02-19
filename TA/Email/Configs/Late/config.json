@@ -1,0 +1,159 @@
+{
+  "template_path": "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/Late/email.tml",
+  "mail_subject": "Activity Plan Due",
+  "from": "apokhriy@uncc.edu",
+  "cc": ["apokhriy@uncc.edu"],
+  "bcc": [],
+
+  "recipients": [ {
+    "First Name": "Julian",
+    "Last Name": "Mucha",
+    "Email": "jmucha1@uncc.edu",
+    "Internship Start Date": "01-08-19"
+  }, {
+    "First Name": "Manideep Varma",
+    "Last Name": "Penmathsa",
+    "Email": "mpenmath@uncc.edu",
+    "Internship Start Date": "12-16-19"
+  }, {
+    "First Name": "Marie",
+    "Last Name": "Tomasik",
+    "Email": "mtomasik@uncc.edu",
+    "Internship Start Date": "11-05-19"
+  }, {
+    "First Name": "Muralidharan",
+    "Last Name": "Singaravel",
+    "Email": "msingara@uncc.edu",
+    "Internship Start Date": "01-08-20"
+  }, {
+    "First Name": "Joe",
+    "Last Name": "Benet",
+    "Email": "jbenet@uncc.edu",
+    "Internship Start Date": "01-01-20"
+  }, {
+    "First Name": "Alexander",
+    "Last Name": "Gulley",
+    "Email": "agulley1@uncc.edu",
+    "Internship Start Date": "01-01-20"
+  }, {
+    "First Name": "Zachary ",
+    "Last Name": "Serapin",
+    "Email": "zserapin@uncc.edu",
+    "Internship Start Date": "02-19-19"
+  }, {
+    "First Name": "Ron",
+    "Last Name": "Barton",
+    "Email": "rbarton1@uncc.edu",
+    "Internship Start Date": "01-13-20"
+  }, {
+    "First Name": "Maggie",
+    "Last Name": "Hakas",
+    "Email": "mhakas@uncc.edu",
+    "Internship Start Date": "01-13-20"
+  }, {
+    "First Name": "Lyndsay",
+    "Last Name": "Richter",
+    "Email": "larichte@uncc.edu",
+    "Internship Start Date": "01-06-20"
+  }, {
+    "First Name": "Chae",
+    "Last Name": "Romano",
+    "Email": "cromano3@uncc.edu",
+    "Internship Start Date": "01-06-20"
+  }, {
+    "First Name": "Kelsey",
+    "Last Name": "Summey",
+    "Email": "ksummey2@uncc.edu",
+    "Internship Start Date": "01-02-20"
+  }, {
+    "First Name": "NITYANAND",
+    "Last Name": "KORE",
+    "Email": "nkore@uncc.edu",
+    "Internship Start Date": "01-02-20"
+  }, {
+    "First Name": "Jeffery",
+    "Last Name": "Dease",
+    "Email": "jdease2@uncc.edu",
+    "Internship Start Date": "01-06-20"
+  }, {
+    "First Name": "Sudha",
+    "Last Name": "Kishorekumar",
+    "Email": "skishore@uncc.edu",
+    "Internship Start Date": "01-08-20"
+  }, {
+    "First Name": "Kabita",
+    "Last Name": "Paul",
+    "Email": "kpaul8@uncc.edu",
+    "Internship Start Date": "01-20-20"
+  }, {
+    "First Name": "Divya",
+    "Last Name": "Garg",
+    "Email": "dgarg@uncc.edu",
+    "Internship Start Date": "01-15-20"
+  }, {
+    "First Name": "Ibrokhim",
+    "Last Name": "Sadikov",
+    "Email": "isadikov@uncc.edu",
+    "Internship Start Date": "01-10-20"
+  }, {
+    "First Name": "Srivan",
+    "Last Name": "Vavilala",
+    "Email": "svavilal@uncc.edu",
+    "Internship Start Date": "01-13-20"
+  }, {
+    "First Name": "Kaci",
+    "Last Name": "Allen",
+    "Email": "kallen70@uncc.edu",
+    "Internship Start Date": "01-15-20"
+  }, {
+    "First Name": "Elif ",
+    "Last Name": "Demir",
+    "Email": "edemir@uncc.edu",
+    "Internship Start Date": "12-16-19"
+  }, {
+    "First Name": "Chunqiu",
+    "Last Name": "Xia",
+    "Email": "cxia2@uncc.edu",
+    "Internship Start Date": "01-08-20"
+  }, {
+    "First Name": "Diwen ",
+    "Last Name": "Xiao",
+    "Email": "dxiao5@uncc.edu",
+    "Internship Start Date": "01-15-20"
+  }, {
+    "First Name": "Arturo",
+    "Last Name": "Cardenas",
+    "Email": "acarden6@uncc.edu",
+    "Internship Start Date": "01-13-20"
+  }, {
+    "First Name": "Ibrokhim ",
+    "Last Name": "Sadikov",
+    "Email": "isadikov@uncc.edu",
+    "Internship Start Date": "01-02-20"
+  }, {
+    "First Name": "Kovidh",
+    "Last Name": "Vegesna",
+    "Email": "kvegesna@uncc.edu",
+    "Internship Start Date": "01-20-20"
+  }, {
+    "First Name": "Jeremiah",
+    "Last Name": "Canty",
+    "Email": "jcanty6@uncc.edu",
+    "Internship Start Date": "01-20-20"
+  }, {
+    "First Name": "Gabriel",
+    "Last Name": "Fair",
+    "Email": "gfair@uncc.edu",
+    "Internship Start Date": "01-20-20"
+  }, {
+    "First Name": "Sivateja",
+    "Last Name": "Chennupati",
+    "Email": "schennu1@uncc.edu",
+    "Internship Start Date": "01-15-20"
+  }, {
+    "First Name": "Sai Smaran",
+    "Last Name": "Annamraju",
+    "Email": "sannamr1@uncc.edu",
+    "Internship Start Date": "01-08-20"
+  }]
+}

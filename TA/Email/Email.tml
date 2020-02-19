@@ -1,0 +1,22 @@
+To {mentor[FirstName]}
+
+{mentor[Title]}
+{mentor[Org]}
+{mentor[Address]}
+
+I am Abhijeet Pokhriyal from UNC-Charlotte, currently a Teaching Assistant for our internship course.
+I am reaching out to you on behalf of Dr. Doug Hague - Executive Director, School of Data Science, UNC-Charlotte.
+
+Our records show that {student[FirstName]} {student[LastName]} is being mentored by you.
+As per course requirements we ask you to fill out the Letter of Agreement in the google link below.
+This form is an acknowledgement of your role as mentor and confirmation of the project.
+
+Please feel free to reach out to your mentee with any questions that you may have.
+If you have any questions for me, do let me know.
+
+Google Form - {googleLink}
+
+If you are having any troubles opening the google form, please fill in the attached document and revert back to us.
+
+Thank you
+Abhijeet
