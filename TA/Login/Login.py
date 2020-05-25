@@ -75,8 +75,28 @@ class Login:
         cj = browser_cookie3.firefox()
         browser = Browser()
         r = browser.get(url)
-        [browser.add_cookie({"name" : c.name , "value":c.value , "domain" : c.domain}) for c in cj if c.domain in ["webauth.uncc.edu"]]
-        #[browser.add_cookie({"name" : c.name , "value":c.value , "domain" : c.domain}) for c in cj if url.find( c.domain) > -1 or c.domain == "webauth.uncc.edu"]
+
+        if url.find("uncc") > -1 :
+            print("Adding For UNCC")
+            cookies = [{"name" : c.name , "value":c.value , "domain" : c.domain} for c in cj if c.domain in ["webauth.uncc.edu"]]
+        else:
+            cookies = []
+            for c in cj :
+                if url.find( c.domain) > -1:
+                    cookies.append({"name" : c.name , "value":c.value , "domain" : c.domain})
+
+        [browser.add_cookie(c) for c in cookies]
+
+        browser.get(url)
+        return browser
+
+    @staticmethod
+    def AuthGet_(url):
+        cj = browser_cookie3.firefox()
+        browser = Browser()
+        r = browser.get(url)
+        #[browser.add_cookie({"name" : c.name , "value":c.value , "domain" : c.domain}) for c in cj if c.domain in ["webauth.uncc.edu"]]
+        [browser.add_cookie({"name" : c.name , "value":c.value , "domain" : c.domain}) for c in cj if url.find( c.domain) > -1]
         browser.get(url)
         return browser
 
@@ -88,12 +108,26 @@ class Login:
     @staticmethod
     def _waitForUrl(url , waitForCssSelector , forceSleep=None):
         browser = Login.AuthGet(url)
-        element = WebDriverWait(browser, 120).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, waitForCssSelector))
-        )
-        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        if forceSleep:
-            time.sleep(forceSleep)
+        js = """
+            height = document.body.scrollHeight;
+            for(i = 0; i< 10 ; i++){
+                window.setTimeout( function(){
+                    window.scrollTo({ top: height, behavior: 'smooth' });
+                    height = height- height*1/4;
+                    },1000*i
+                )
+            }
+        """
+        browser.execute_script(js)
+        try:
+            element = WebDriverWait(browser, 30).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, waitForCssSelector))
+            )
+            browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            if forceSleep:
+                time.sleep(forceSleep)
+        except:
+            pass
         return browser
 
     @staticmethod

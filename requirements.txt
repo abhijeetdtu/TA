@@ -19,3 +19,4 @@ sumy
 pdfminer.six
 wordcloud
 python-linkedin-v2
+plotnine

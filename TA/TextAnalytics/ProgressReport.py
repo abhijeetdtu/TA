@@ -19,14 +19,17 @@ def AnalyseFiles(pathToFiles):
     for f in os.listdir(pathToFiles):
         print(f)
         if f.find(".pdf") > 0:
-            p = os.path.abspath(os.path.join(pathToFiles  ,f))
-            txt =extract_text(p)
-            sents= Summa(txt)
-            cloud = WordCloud(width=480, height=480, margin=0).generate(txt)
-            img = cloud.to_image()
-            img = ToHTMLImg(img)
-            fileResults = (f, sents,img)
-            allSents.append(fileResults)
+            try:
+                p = os.path.abspath(os.path.join(pathToFiles  ,f))
+                txt =extract_text(p)
+                sents= Summa(txt)
+                cloud = WordCloud(width=480, height=480, margin=0).generate(txt)
+                img = cloud.to_image()
+                img = ToHTMLImg(img)
+                fileResults = (f, sents,img)
+                allSents.append(fileResults)
+            except:
+                pass
     return allSents
 
 
@@ -59,7 +62,7 @@ def Run(pathToFiles):
     SentsToHTML(sents)
 
 if __name__ == "__main__":
-    pathToFiles = "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Sheets/_tempWorkspace/Internship/Progress Report 1"
+    pathToFiles = "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Sheets/_tempWorkspace/Internship/Progress Report 2"
     # Path = ""
     import argparse
     parser = argparse.ArgumentParser()

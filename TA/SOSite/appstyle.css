@@ -1,0 +1,13 @@
+.article{
+  font-weight: bold;
+}
+
+
+.nav-link.active {
+  color: white;
+  background-color: rgb(4, 106, 56) !important;
+}
+
+a{
+  color: grey;
+}

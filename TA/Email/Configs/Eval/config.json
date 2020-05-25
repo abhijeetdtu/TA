@@ -1,0 +1,17 @@
+{
+  "template_path": "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/Eval/email.tml",
+  "mail_subject": "UNC Charlotte Spring 2020 Internship : Mentor Evaluation",
+  "from": "apokhriy@uncc.edu",
+  "cc": ["apokhriy@uncc.edu"],
+  "bcc": [],
+
+  "global": {
+    "form_link": "https://forms.gle/DpX325UZe7tSK4j4A",
+    "doc_link": "C:\\Users\\Abhijeet\\Documents\\GitHub\\TA\\TA\\Email\\Mentor Evaluation_2.docx"
+  },
+  "recipients": [{
+    "Email": "dmoss@sportsatlas.com",
+    "student_name": "Blake Cope",
+    "mentor": "Derick Moss"
+  }]
+}

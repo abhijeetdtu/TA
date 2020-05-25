@@ -7,18 +7,19 @@ import argparse
 
 class EmailerGeneric:
 
-    def __init__(self , pathConfigJsonOrName):
+    def __init__(self , pathConfigJsonOrName , isDryRun):
 
         self.config = self._getConfig(pathConfigJsonOrName)
         self.template_path = self.config["template_path"]
         self.emailer = EmailerSingle
+        self.isDryRun = isDryRun
 
     def _getConfig(self, pathConfigJsonOrName):
         baseConfigPath = os.path.abspath(os.path.join(os.path.dirname(__file__) , "config.json"))
         conf = json.load(open(baseConfigPath, "r"))
 
         if os.path.exists(pathConfigJsonOrName):
-            path = pathConfigJson
+            path = pathConfigJsonOrName
         elif pathConfigJsonOrName in conf:
             path = conf[pathConfigJsonOrName]
         else:
@@ -30,18 +31,24 @@ class EmailerGeneric:
         subject = self.config["mail_subject"]
         fromEmail =   self.config["from"]
         ccEmail =   ", ".join(self.config["cc"])
+        attachment = self.config["global"]["doc_link"]
 
         for r in self.config["recipients"]:
             #email = r["Email"]
-            toEmail = fromEmail
+            #print(self.config["global"])
+            for k,v in self.config["global"].items():
+                r[k]=v
+            #toEmail = fromEmail
+            toEmail = r["Email"] if not self.isDryRun else fromEmail
             msg = EmailFormatter(self.template_path).GetEmailFormatted(r)
-            print(f"\n\n{msg}\n")
-            self.emailer.Send(subject , fromEmail ,toEmail , ccEmail,msg, None )
+            print(f"\n\n{msg}\n" , toEmail)
+            self.emailer.Send(subject , fromEmail ,toEmail , ccEmail,msg, attachment )
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--pathOrName" , help="path to Email config.json or name/key mentioned config.json")
+    parser.add_argument("--isDryRun" ,default="Yes" , help="Yes or No - Whether to actually send out emails to recipients or back to the sender. Yes - back to sender. No - to recpient mentioned in config")
 
     args = parser.parse_args()
-    EmailerGeneric(args.pathOrName).Run()
+    EmailerGeneric(args.pathOrName, args.isDryRun.lower() == "yes").Run()

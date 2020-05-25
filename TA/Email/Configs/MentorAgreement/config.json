@@ -1,0 +1,51 @@
+{
+  "global": {
+    "doc_link": "C:\\Users\\Abhijeet\\Documents\\GitHub\\TA\\TA\\Email\\LetterOfAgreementSDS.docx"
+  },
+  "template_path": "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/MentorAgreement/email.tml",
+  "mail_subject": "UNCC Summer Internship 2020 - Mentor Letter of Agreement",
+  "from": "apokhriy@uncc.edu",
+  "cc": [],
+  "recipients": [{
+    "Email": "kristen.mcentire@bofa.com",
+    "student_name": "Leenora Arnold",
+    "mentor": "Kristen McEntire"
+  }, {
+    "Email": "dhague@uncc.edu",
+    "student_name": "Homeira  Azari",
+    "mentor": "Doug Hague"
+  }, {
+    "Email": "raman.geddam@bofa.com",
+    "student_name": "Akash Bhardwaj",
+    "mentor": "Raman Geddam"
+  }, {
+    "Email": "beth.herron@sas.com",
+    "student_name": "Saurabh Duggal",
+    "mentor": "Beth Herron"
+  }, {
+    "Email": "Brandon.Dombroski@pwc.com",
+    "student_name": "Khabiyrul Gainey",
+    "mentor": "Brandon Dombroski"
+  }, {
+    "Email": "Christina.Frisco@honeywell.com",
+    "student_name": "Kayla Harasymchuk",
+    "mentor": "Christina Frisco Milde"
+  }, {
+    "Email": "Wil.Lavender@wellsfargo.com",
+    "student_name": "Min-Seung Kim",
+    "mentor": "Wil Lavender"
+  }, {
+    "Email": "Ramon.Rossman2@blueshieldca.com",
+    "student_name": "Vishnu Vardhan Rao Madamanchi",
+    "mentor": "Ramon Rossman"
+  }, {
+    "Email": "Surendra.Pamidi@xpo.com",
+    "student_name": "Amit Pandit",
+    "mentor": "Surendra Pamidi"
+  }, {
+    "Email": "jeanclaude.kayigana@lashgroup.com",
+    "student_name": "Eric Rwabuhihi",
+    "mentor": "Jean Claude Kayigana"
+  }
+]
+}

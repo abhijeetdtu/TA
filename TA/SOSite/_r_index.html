@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <!-- Add this to <head> -->
+
+  <!-- Load required Bootstrap and BootstrapVue CSS -->
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+  <!-- Load polyfills to support older browsers -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+
+  <!-- Load Vue followed by BootstrapVue -->
+  <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+  <!-- Load the following for BootstrapVueIcons support -->
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+  <script type="text/javascript" src="./board_members/events.js"></script>
+  <script type="text/javascript" src="./board_members/members_list.js"></script>
+</head>
+
+<body>
+  <div class="container" id="app">
+
+        <div>
+          <b-tabs pills card vertical content-class="mt-3">
+            <b-tab title="About Us" active>
+              <p>  <about-us></about-us> </p>
+            </b-tab>
+            <b-tab title="Current Board">
+                <board-members v-bind:member-details='members'></board-members>
+            </b-tab>
+            <b-tab title="Events">
+                <events-list v-bind:events='events'></events-list>
+            </b-tab>
+            <b-tab title="Alumni Engagement">
+                Alumni Engagement
+            </b-tab>
+            <b-tab title="Travel Sponsor">
+                <travel-sponsor></travel-sponsor>
+            </b-tab>
+            <b-tab title="Constitution">
+                <constitution></constitution>
+            </b-tab>
+            <b-tab title="By-Laws">
+                <by-laws></by-laws>
+            </b-tab>
+          </b-tabs>
+        </div>
+  </div>
+
+  <link type="text/css" rel="stylesheet" href="appstyle.css" />
+  <script type="text/javascript" src="./events_list.js"></script>
+  <script type="text/javascript" src="./board_member_info.js"></script>
+  <script type="text/javascript" src="./board_members.js"></script>
+  <script type="text/javascript" src="./travel_sponsor.js"></script>
+  <script type="text/javascript" src="./constitution.js"></script>
+  <script type="text/javascript" src="./bylaws.js"></script>
+  <script type="text/javascript" src="./about_us.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+
+</body>
+
+</html>

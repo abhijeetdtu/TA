@@ -5,3 +5,7 @@ _tempWorkspace
 ToDoug
 ScratchPat
 *.csv
+!DataDump
+grades*pkl
+*test.output*
+_delete.json

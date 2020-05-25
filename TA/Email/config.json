@@ -1,3 +1,5 @@
 {
-  "late" : "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/Late/config.json"
+  "late" : "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/Late/config.json",
+  "eval" : "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/Eval/config.json",
+  "accept" : "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/MentorAgreement/config.json"
 }
