@@ -20,3 +20,5 @@ pdfminer.six
 wordcloud
 python-linkedin-v2
 plotnine
+pdfkit
+xhtml2pdf

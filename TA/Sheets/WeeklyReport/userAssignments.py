@@ -16,8 +16,10 @@ from bs4 import BeautifulSoup
 import numpy as np
 import pandas as pd
 import logging
+from datetime import date
 from datetime import datetime as dtime
 from plotnine import *
+import re
 
 logging.basicConfig(level=logging.INFO)
 
@@ -109,14 +111,14 @@ class CourseUserSubmissions:
     def assignmentToHeader(self,assignments):
         return [(a.name,a.score) for a in assignments]
 
-    def gradesToCSV(self, grades):
-        grades = [assignments]
-        header = self.assignmentToHeader(grades[0])
-
-        with open(self.oFilePath , "w") as f:
-            writer = csv.writer(f)
-            writer.writerow(header )
-            writer.writerows(grades)
+    # def gradesToCSV(self, grades):
+    #     grades = [assignments]
+    #     header = self.assignmentToHeader(grades[0])
+    #
+    #     with open(self.oFilePath , "w") as f:
+    #         writer = csv.writer(f)
+    #         writer.writerow(header )
+    #         writer.writerows(grades)
 
     def getAssignments(self,user,assignmentsList):
         grades = []
@@ -145,58 +147,98 @@ class CourseUserSubmissions:
         #
         # pool = ThreadPool(5)
         # grades  = pool.map(lambda u : self.getAssignments(u,assignmentsList) , an)
-        #
-        #pickle.dump(grades , open("grades_2.pkl" , "wb"))
-        grades = pickle.load(open("grades.pkl" , "rb"))
+        # #
+        # pickle.dump(grades , open("grades_2.pkl" , "wb"))
+
+        grades = pickle.load(open("grades_2.pkl" , "rb"))
         self.gradesToCSV(grades)
 
     def _filterDFOnDate(self,df):
         students = df.loc[np.where(df["col2"].apply(lambda x: x.find("05") > -1 ))]["col0"].unique()
         return df[df["col0"].isin(students)]
 
-    def gradesToCSV(self,grades):
+    def gradesToCSV(self,grades , filterDate = "04/20/2020"):
 
         gradesAll = [g for gi in grades for g in gi]
 
         df = pd.DataFrame(gradesAll , columns=[f"col{i}" for i in range(4)])
 
-
-
         def parseDate(date):
             try:
-                dt= dtime.strptime(date , "%b %d at %I:%M%p" )
+                dt= dtime.strptime(date , "%b %d at %I:%M%p %Y" )
             except:
                 try:
-                    dt= dtime.strptime(date , "%b %d at %I%p")
+                    dt= dtime.strptime(date , "%b %d at %I%p %Y")
                 except:
-                    return date
-
-            dt = dt.strftime("%m_%d")
+                    dt= date(1992,1,1)
             return dt
 
-        df["col2"] = df["col2"].str.replace("^\s*$" , "-" ,regex=True)
+
+        df["col2"] = df["col2"].str.replace("^\s*$" , "Jan 1 at 12:00pm" ,regex=True)
+        df["col2"] = df["col2"] + " 2020"
         df["col2"] = df["col2"].apply(lambda x: parseDate(x))
-        df["col3"] = df["col3"].fillna("-")
-        df["col3"] = df["col3"].str.replace("^\s*$" , "-" , regex=True)
 
+        df["col3"] = df["col3"].fillna("0")
+        df["col3"] = df["col3"].str.replace("^\s*$" , "0", regex=True)
+        df["col3"] = df["col3"].astype("float")
+        df["assignment_type"] = np.where(df["col1"].str.lower().str.find("knowledge check") > -1 , "kc" , "ex")
 
-        ##
-        df = self._filterDFOnDate(df)
-        ##
-        #print(df["col2"].value_counts())
         #print(df.head())
-        dates = df.pivot(index="col0" , values="col2" , columns="col1")
-        scores = df.pivot(index="col0" , values="col3" , columns="col1")
-        scores["num_completed"] = scores[scores != "-"].count(axis=1)
-        dates.columns = [c + "_Date" for c in dates.columns ]
-        #scores.columns = [dates.columns = ["Date" + c for c in dates.columns ]]
-        fdf = scores.join(dates)
-        fdf = fdf[sorted(list(fdf.columns))]
+        self._toDatePlot(df)
+        #df["col3_temp"] = df["col3"]
+        def aggStudent(df):
+            total = df["col3"].astype("float").sum()
+            num_completed = df[df["col3"] != 0].shape[0]
+            df = df[df["col2"] == df["col2"].max()].head(1)
 
-        fdf = fdf.reset_index()
-        fdf = fdf.sort_values("num_completed" , ascending=False)
-        fdf.to_csv(self.oFilePath)
-        self.dfToPlot(dates,scores)
+            df["total"] = total
+            df["num_completed"] = num_completed
+            return df
+
+
+        df = df.groupby(["col0","assignment_type"]).apply(aggStudent)
+            ##
+        df = df[df["col2"] > dtime.strptime(filterDate , "%m/%d/%Y")]
+
+        def pivotStudent(df):
+            df = df.drop("assignment_type" , axis=1)
+            if df.shape[0] == 1:
+                filler = pd.Series(np.repeat("-" , df.shape[1]) , index=df.columns)
+            else:
+                filler = df.loc[1]
+            df = pd.concat([df.iloc[0], filler])
+            df = pd.DataFrame(df).transpose()
+            return df
+
+        s = df.reset_index(drop=True).groupby("col0").apply(pivotStudent)
+        s.columns = [a + "_" + h for a in ["Latest Exercise" ,"Latest knowledge Check"] for h in ["Delete","Name" , "Submission Date" , "Score" ,"Total Score" , "Total Completed"] ]
+
+        s = s.reset_index()
+        s = s.rename(columns={ "col0" : "Student Name"
+                    , "Latest Exercise_Total Score" : "All Exercises Total Score"
+                    , "Latest Exercise_Total Completed" : "Total Exercises Completed"
+                    , "Latest knowledge Check_Total Score" : "All Knowledge Checks Total Score"
+                    , "Latest knowledge Check_Total Completed" : "Total Knowledges checks Completed" })
+
+        s = s.drop([c for c in s.columns if c.find("Delete") > -1] + ["level_1"] , axis=1)
+
+        s.to_csv(self.oFilePath ,index=False)
+        #self.dfToPlot(dates,scores)
+
+
+    def _toDatePlot(self,df):
+        df = df.copy()
+        df["date"] = df["col2"].dt.strftime("%m_%d_%y")
+        df = df[df["date"] != "01_01_20"]
+        d = df.groupby(["assignment_type","date"]).count().reset_index()
+        print(d)
+        p = ggplot(d , aes(x="date" , y="col0" , color="assignment_type",group="assignment_type"))\
+         + geom_line()\
+         + xlab("Date")\
+         + ylab("Number of Submissions")\
+         + self.plotTheme\
+         + theme(axis_text_x=element_text(angle=-90) , legend_text=element_text(color="white"))
+        p.save(self._pathInReportFolder("trend.png"))
 
     def _datePlot(self,dates):
         meltedDates = dates.melt()
@@ -237,6 +279,9 @@ if __name__ == "__main__":
     import pathlib
     import datetime
 
+    """
+    python -m TA.Sheets.WeeklyReport.userAssignments --course-id 87897
+    """
     dpath = os.path.join(pathlib.Path(__file__).resolve().parent.absolute() , f"report_{datetime.date.today()}")
     parser = argparse.ArgumentParser()
     parser.add_argument("--course-id")

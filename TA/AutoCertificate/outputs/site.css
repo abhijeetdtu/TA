@@ -1,0 +1,30 @@
+.container{
+  border:10px;
+  border-style:double;
+  border-color:green;
+}
+.dashes{
+  font-size: 12px;
+}
+
+.sign-fill{
+  margin-bottom: 0px;
+}
+
+.hash{
+  font-size: 0.5em;
+  margin-bottom: 5px;
+}
+
+.img-fluid{
+  max-width:50%;
+}
+
+.logo{
+  z-index:5;
+  position: relative;
+}
+
+.heading{
+  font-family: Comic Sans MS, Comic Sans, cursive;
+}

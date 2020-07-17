@@ -46,6 +46,9 @@ class EmailerGeneric:
 
 
 if __name__ == "__main__":
+    """
+    
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("--pathOrName" , help="path to Email config.json or name/key mentioned config.json")
     parser.add_argument("--isDryRun" ,default="Yes" , help="Yes or No - Whether to actually send out emails to recipients or back to the sender. Yes - back to sender. No - to recpient mentioned in config")

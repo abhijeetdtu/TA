@@ -12,10 +12,13 @@ def toConfig(path , csv_name , mail_subject , mail_from,mail_cc):
     df.head()
     config = {}
 
-    config["recipients"] = json.loads(df.to_json(orient="records"))
+
     config["mail_subject"] = mail_subject
     config["from"] = mail_from
     config["cc"] = mail_cc
+    config["template_path"] = ""
+    config["recipients"] = json.loads(df.to_json(orient="records"))
+
     return config
 
 if __name__ == "__main__":
@@ -27,11 +30,14 @@ if __name__ == "__main__":
     ## Alexander,Gulley,Aimee Marva,aimee.marva@ally.com
     ## Anjali,Bapat,Chris Sunde,chris@goodroads.io
 
+    """
+
+    """
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--config-folder" , default=path , help="Path to folder where source csv is and Where the config will be created")
     parser.add_argument("--csv-name" , default=csv , help="Name of the CSV with Student and Mentor Details")
-    parser.add_argument("--mail-subject" , default="" , help="Subject of the Email to be sent")
+    parser.add_argument("--mail-subject" , default="UNCC Summer Internship 2020 - Mentor Letter of Agreement" , help="Subject of the Email to be sent")
     parser.add_argument("--frm" , default="" , help="Email address from which to send emails")
     parser.add_argument("--cc" , default=[] , help="List of Email addresses to cc in the email")
 

@@ -1,0 +1,78 @@
+{
+  "recipients": [{
+    "Email": "raman.geddam@bofa.com",
+    "student_name": "Akash Bhardwaj",
+    "mentor": "Raman Geddam"
+  }, {
+    "Email": "Surendra.Pamidi@xpo.com",
+    "student_name": "Amit Pandit",
+    "mentor": "Surendra Pamidi"
+  }, {
+    "Email": "ebuabeng.socs@knust.edu.gh",
+    "student_name": "Augustine Osei-Fosu",
+    "mentor": "Emmanuel Buabeng"
+  }, {
+    "Email": "zchen23@uncc.edu",
+    "student_name": "Edward Park",
+    "mentor": "Victor Zitian Chen"
+  }, {
+    "Email": "kigust@gmail.com, jeanclaude.kayigana@lashgroup.com",
+    "student_name": "Eric Rwabuhihi",
+    "mentor": "Jean Claude Kayigana"
+  }, {
+    "Email": "szulu@allstate.com",
+    "student_name": "Evan Canfield",
+    "mentor": "Sebastian Zuluaga"
+  }, {
+    "Email": "xliu44@uncc.edu",
+    "student_name": "Jack Phillips",
+    "mentor": "Angela Liu"
+  }, {
+    "Email": "csubrama@uncc.edu",
+    "student_name": "Jared Leach",
+    "mentor": "Chandra Subramaniam"
+  }, {
+    "Email": "kristen.mcentire@bofa.com",
+    "student_name": "Leenora Arnold",
+    "mentor": "Kristen McEntire"
+  }, {
+    "Email": "zchen23@uncc.edu",
+    "student_name": "Megha Devrani",
+    "mentor": "Victor Zitian Chen"
+  }, {
+    "Email": "vijay@rxdatascience.com",
+    "student_name": "Neha Ayuluri",
+    "mentor": "Vijay Mohan"
+  }, {
+    "Email": "smousav1@uncc.edu",
+    "student_name": "Richmond Otchere",
+    "mentor": "Reza Mousavi"
+  }, {
+    "Email": "fbatist1@uncc.edu",
+    "student_name": "Sam Johnson",
+    "mentor": "Frederico Batista Pereira"
+  }, {
+    "Email": "beth.herron@sas.com",
+    "student_name": "Saurabh Duggal",
+    "mentor": "Beth Herron"
+  }, {
+    "Email": "brian.kenyon@pmmconline.com",
+    "student_name": "Sirish Acharya",
+    "mentor": "Brain Kenyon"
+  }, {
+    "Email": "PPurmaani@us.mufg.jp",
+    "student_name": "Tom Prickitt",
+    "mentor": "Praveen Purmaani"
+  }, {
+    "Email": "Bianca.Cordova@blueshieldca.com",
+    "student_name": "Vishnu Vardhan Rao Madamanchi",
+    "mentor": "Bianca Cordova"
+  }],
+  "mail_subject": "UNCC Summer Internship 2020 - Mentor Letter of Agreement",
+  "from": "apokhriy@uncc.edu",
+  "cc": [],
+  "global": {
+    "doc_link": "C:\\Users\\Abhijeet\\Documents\\GitHub\\TA\\TA\\Email\\LetterOfAgreementSDS.docx"
+  },
+  "template_path": "C:/Users/Abhijeet/Documents/GitHub/TA/TA/Email/Configs/MentorAgreement/email.tml"
+}
